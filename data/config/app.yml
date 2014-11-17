@@ -1,0 +1,133 @@
+    <?php
+
+    $var = str_replace( "\\","/",trim(dirname(__FILE__)));
+    @define("FV_ROOT", implode("/", array_slice(explode("/",$var),0,-1)));
+    @define("FV_WEB", implode("/", array_slice(explode("/",$var),0,-2)));
+
+
+    define("CURRENT_LANGUAGE", "ru");
+    $srv = $_SERVER['SERVER_NAME'];
+    
+
+    $__server_host = $_SERVER["HTTP_HOST"];
+    if(strpos($__server_host, "local") !== FALSE) {
+        $__user = 'root';
+        $__password = '';
+    }
+    else {
+      $__user = 'abclub';
+      $__password = 'SeeT5eiroophai1';
+    }
+    $__db_server = 'localhost';
+    $__db_name = 'abclub';
+
+    define("__SERVER_NAME", $__server_host);
+    define("__user", $__user);
+    define("__password", $__password);
+    define("__DB_SERVER", $__db_server);
+    define("__DB_NAME", $__db_name);
+
+    // ONE DOMAIN SYSTEM
+    define("__BASE", $__server_host);
+
+?>
+
+server_name: %__SERVER_NAME%
+server_url: http://%server_name%
+site_name: Automation
+site_base: %__BASE%
+dir_root: %FV_ROOT%
+tech_web_root: %FV_WEB%/
+dir_web_root: /
+cdn_root: http://img.%server_name%/
+cdn_enable: false
+charset: utf-8
+language: %CURRENT_LANGUAGE%
+
+database: 
+ db_prefix: emp
+
+pdo_database:
+ dsn: mysql:host=%__DB_SERVER%;dbname=%__DB_NAME%;charset=utf8
+ user: %__user%
+ pass: %__password%
+
+session:
+ sess_name: fv_session
+ storage: memcache
+ params:
+   life_time: 10000
+   table: %database.db_prefix%Session
+
+storage:
+  memcache:
+    host: localhost
+  file:
+    path: %dir_root%storage/storage.dat
+
+filters: [Action]
+
+cache:
+  path: %dir_root%cache/
+  ttl: 3600
+
+memcache:
+  host: localhost
+  port: 11211
+  ttl: 3600
+
+path:
+ classes: %dir_root%classes/
+ error: %dir_root%logs/php-error.log
+ db: %path.classes%helpers/DB/
+ entity: %path.classes%entity/
+ filters: %path.classes%filter/
+ interfaces: %path.classes%interface/
+ exceptions: %path.classes%exceptions/
+ includes: %dir_root%includes/
+ config: %dir_root%config/
+ app: %dir_root%app/
+ css: %dir_web_root%css/
+ js: %dir_web_root%js/
+ cache: %dir_root%cache/
+ global_cache: %dir_root%cache/
+ noImage: /images/no-image.png
+ smarty:
+  class_path: %dir_root%smarty/
+ upload:
+  web_temporal: %dir_web_root%upload/temporal/
+  temporal: %tech_web_root%upload/temporal/
+  web_images: %dir_web_root%upload/images/
+  images: %tech_web_root%upload/images/
+  web_bg: %dir_web_root%upload/background/
+  bg: %tech_web_root%upload/background/
+  web_files: %dir_web_root%upload/files/
+  files: %tech_web_root%upload/files/
+ entImages:
+  MenuFront: img/upload/menufront/
+  Floors: img/upload/floors/
+  Partners: img/upload/partners/
+ application:
+  backend:
+   root: %path.app%backend/
+   web_root: %dir_web_root%backend/
+   config: %path.application.backend.root%config/
+   classes: %path.application.backend.root%classes/
+  frontend:
+   root: %path.app%frontend/
+   web_root: %dir_web_root%
+   config: %path.application.frontend.root%config/
+   classes: %path.application.frontend.root%classes/
+
+cache:
+  cachetime: 60
+
+pager:
+  show_per_page: 8;
+
+languages:
+  databasePostfix: Lang
+
+email:
+  main: twidancer@gmail.com
+

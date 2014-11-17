@@ -1,0 +1,455 @@
+modules:
+  index:
+    path: %path.modules%index/
+    menu_path: ~
+    action_class: IndexAction
+    module_class: IndexModule
+    name: Главная страница
+    smarty:
+      template: %modules.index.path%template/
+      compile: %path.smarty.compile%
+
+  usergroups:
+    path: %path.modules%usergroups/
+    menu_path: Администрирование/Группы пользователей
+    action_class: UserGroupsAction
+    module_class: UserGroupsModule
+    icon: package.png
+    name: Группы пользователей
+    access:
+      enable: true
+      acl: [acl_user_groups]
+    smarty:
+      template: %modules.usergroups.path%template/
+      compile: %path.smarty.compile%
+
+  transliterate:
+    path: %path.modules%transliterate/
+    menu_path: ~
+    action_class: TransliterateAction
+    module_class: TransliterateModule
+    icon: ~
+    name: ~
+    access:
+      enable: false
+    smarty:
+      template: %modules.transliterate.path%template/
+      compile: %path.smarty.compile%
+
+  users:
+    path: %path.modules%_default/
+    menu_path: Администрирование/Пользователи
+    action_class: DefaultAction
+    module_class: DefaultModule
+    name: Пользователи
+    entity: User
+    icon: vcard.png
+    access:
+      enable: true
+      acl:
+        index: [acl_user_show, acl_user_edit]
+        edit: [acl_user_edit]
+        delete: [acl_user_edit]
+        save: [acl_user_edit]
+    filter:
+      type: simple
+      fields: [name]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.users.path%template/
+      compile: %path.smarty.compile%
+
+  pages:
+    path: %path.modules%pages/
+    menu_path: Администрирование/Управление страницами
+    action_class: PagesAction
+    module_class: PagesModule
+    icon: page_code.png
+    name: Управление страницами
+    params:
+      app: frontend
+    access:
+      enable: true
+      acl: [acl_pages]
+    smarty:
+      template: %modules.pages.path%template/
+      compile: %path.smarty.compile%
+
+  login:
+    path: %path.modules%login/
+    menu_path: ~
+    action_class: LoginAction
+    module_class: LoginModule
+    name: вход в систему
+    smarty:
+      template: %modules.login.path%template/
+      compile: %path.smarty.compile%
+
+  menu:
+    path: %path.modules%menu/
+    menu_path: ~
+    action_class: MenuAction
+    module_class: MenuModule
+    name: Главное меню
+    smarty:
+      template: %modules.menu.path%template/
+      compile: %path.smarty.compile%
+
+  staticpages:
+    path: %path.modules%_default/
+    menu_path: Содержание/Статические страницы
+    entity: StaticPage
+    action_class: DefaultAction
+    module_class: DefaultModule
+    icon: page_edit.png
+    name: Статические страницы
+    filter:
+      type: simple
+      fields: [title, name, text]
+    access:
+      enable: true
+      acl: [acl_static_pages]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.staticpages.path%template/
+      compile: %path.smarty.compile%
+
+  aconfig:
+    path: %path.modules%aconfig/
+    menu_path: Администрирование/Глобальные константы
+    action_class: AConfigAction
+    module_class: AConfigModule
+    name: Глобальные константы
+    icon: page_code.png
+    pager:
+      show_per_page: 15;
+    access:
+      enable: true
+      acl: [acl_aconfig]
+    smarty:
+      template: %modules.aconfig.path%template/
+      compile: %path.smarty.compile%
+
+  agents:
+    path: %path.modules%_default/
+    menu_path: Справочники/Агенты
+    entity: Emp_Agent
+    action_class: DefaultAction
+    module_class: DefaultModule
+    name: Агенты
+    icon: report.png
+    pager:
+      show_per_page: 15
+    access:
+      enable: true
+      acl: [acl_model]
+    filter:
+      type: simple
+      fields: [name]
+    actions:
+      edit: true
+      create: true
+      delete: true
+    smarty:
+      template: %modules.agents.path%template/
+      compile: %path.smarty.compile%
+
+  agenttypes:
+    path: %path.modules%_default/
+    menu_path: Справочники/Виды агентов
+    entity: Emp_AgentType
+    action_class: DefaultAction
+    module_class: DefaultModule
+    name: Типы агентов
+    icon: report.png
+    pager:
+      show_per_page: 15
+    access:
+      enable: true
+      acl: [acl_model]
+    filter:
+      type: simple
+      fields: [name]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.agenttypes.path%template/
+      compile: %path.smarty.compile%
+
+  vehicles:
+    path: %path.modules%vehicle/
+    menu_path: Справочники/Транспорт
+    entity: Emp_Vehicle
+    action_class: VehicleAction
+    module_class: VehicleModule
+    name: Транспорт
+    icon: report.png
+    pager:
+      show_per_page: 15
+    access:
+      enable: true
+      acl: [acl_model]
+    filter:
+      type: simple
+      fields: [name]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.vehicles.path%template/
+      compile: %path.smarty.compile%
+
+  hotels:
+    path: %path.modules%_default/
+    menu_path: Справочники/Обьекты проживания
+    entity: Emp_Hotel
+    action_class: DefaultAction
+    module_class: DefaultModule
+    name: Обьекты проживания
+    icon: report.png
+    pager:
+      show_per_page: 15
+    access:
+      enable: true
+      acl: [acl_model]
+    filter:
+      type: simple
+      fields: [name]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.hotels.path%template/
+      compile: %path.smarty.compile%
+
+  directions:
+    path: %path.modules%_default/
+    menu_path: Справочники/Направления
+    entity: Emp_Direction
+    action_class: DefaultAction
+    module_class: DefaultModule
+    name: Направления
+    icon: report.png
+    pager:
+      show_per_page: 15
+    access:
+      enable: true
+      acl: [acl_model]
+    filter:
+      type: simple
+      fields: [name]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.directions.path%template/
+      compile: %path.smarty.compile%
+
+  offers:
+    path: %path.modules%_default/
+    menu_path: Справочники/Предложения
+    entity: Emp_Offer
+    action_class: DefaultAction
+    module_class: DefaultModule
+    name: Предложения
+    icon: report.png
+    pager:
+      show_per_page: 15
+    access:
+      enable: true
+      acl: [acl_model]
+    filter:
+      type: simple
+      fields: [direction.name]
+    table:
+      use:
+        foreigns: [direction]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.offers.path%template/
+      compile: %path.smarty.compile%
+
+  servicecategories:
+    path: %path.modules%_default/
+    menu_path: Справочники/Категории Услуг
+    entity: Emp_ServiceCategory
+    action_class: DefaultAction
+    module_class: DefaultModule
+    name: Категории Услуг
+    icon: report.png
+    pager:
+      show_per_page: 15
+    access:
+      enable: true
+      acl: [acl_model]
+    filter:
+      type: simple
+      fields: [name]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.servicecategories.path%template/
+      compile: %path.smarty.compile%
+
+  services:
+    path: %path.modules%_default/
+    menu_path: Справочники/Услуги
+    entity: Emp_Service
+    action_class: DefaultAction
+    module_class: DefaultModule
+    name: Услуги
+    icon: report.png
+    pager:
+      show_per_page: 15
+    access:
+      enable: true
+      acl: [acl_model]
+    filter:
+      type: simple
+      fields: [name]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.services.path%template/
+      compile: %path.smarty.compile%
+
+  serviceoffer:
+    path: %path.modules%_default/
+    menu_path: Справочники/Услуги по предложениям
+    entity: Emp_ServiceToOffer
+    action_class: DefaultAction
+    module_class: DefaultModule
+    name: Услуги по предложениям
+    icon: report.png
+    pager:
+      show_per_page: 50
+    access:
+      enable: true
+      acl: [acl_model]
+    table:
+      use:
+        foreigns: [service]
+    filter:
+      type: simple
+      fields: [service.name]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.serviceoffer.path%template/
+      compile: %path.smarty.compile%
+
+  drivers:
+    path: %path.modules%_default/
+    menu_path: Справочники/Водители
+    entity: Emp_Driver
+    action_class: DefaultAction
+    module_class: DefaultModule
+    name: Водители
+    icon: report.png
+    pager:
+      show_per_page: 15
+    access:
+      enable: true
+      acl: [acl_model]
+    filter:
+      type: simple
+      fields: [name]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.drivers.path%template/
+      compile: %path.smarty.compile%
+
+  sources:
+    path: %path.modules%_default/
+    menu_path: Справочники/Источники
+    entity: Emp_Source
+    action_class: DefaultAction
+    module_class: DefaultModule
+    name: Источники
+    icon: report.png
+    pager:
+      show_per_page: 15
+    access:
+      enable: true
+      acl: [acl_model]
+    filter:
+      type: simple
+      fields: [name]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.sources.path%template/
+      compile: %path.smarty.compile%
+
+  statuses:
+    path: %path.modules%_default/
+    menu_path: Справочники/Статусы
+    entity: Emp_OrderStatus
+    action_class: DefaultAction
+    module_class: DefaultModule
+    name: Статусы
+    icon: report.png
+    pager:
+      show_per_page: 15
+    access:
+      enable: true
+      acl: [acl_model]
+    filter:
+      type: simple
+      fields: [name]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.statuses.path%template/
+      compile: %path.smarty.compile%
+
+  sourcepayment:
+    path: %path.modules%_default/
+    menu_path: Справочники/Источник оплаты
+    entity: Emp_SourcePayment
+    action_class: DefaultAction
+    module_class: DefaultModule
+    name: Источник оплаты
+    icon: report.png
+    pager:
+      show_per_page: 15
+    access:
+      enable: true
+      acl: [acl_model]
+    filter:
+      type: simple
+      fields: [name]
+    actions:
+      create: true
+      edit: true
+      delete: true
+    smarty:
+      template: %modules.sourcepayment.path%template/
+      compile: %path.smarty.compile%

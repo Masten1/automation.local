@@ -1,0 +1,11 @@
+acls:
+  group_login:
+    name: Авторизация на сайтах
+    acl_backend_login: возможность авторизации на административном разделе сайта
+    acl_frontend_login: возможность авторизации на сайте    
+  group_administrative:
+    name: Административные права
+    acl_users:
+      name: Полное управление пользователями
+      acl_user_show: просмотр пользователей
+      acl_user_edit: редактирование пользователей

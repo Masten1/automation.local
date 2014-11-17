@@ -1,0 +1,16 @@
+template:  
+  index:
+    source: index.tpl
+    name: Основной шаблон
+    default_content_part: page_content
+    content_parts:
+      page_menu: Шапка
+      page_content: Основной контент страницы
+
+  login:
+    source: nocontent.tpl
+    name: Шаблон входа на сайт
+    default_content_part: page_content
+    content_parts:
+      page_menu: Шапка
+      page_content: Основной контент страницы

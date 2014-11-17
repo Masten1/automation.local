@@ -1,0 +1,210 @@
+img {
+  border:none;
+}
+
+p {margin-top:0px;}
+
+input,select,textarea {font-size:10px;font-family:Verdana;}
+
+a {text-decoration:none;color:#B22C1B;}
+
+
+div#content {
+  margin:auto;
+  width:761px;
+  border:1px solid #B22C1B;
+  border-bottom:17px solid #B22C1B;
+  padding:1px;
+  height:100%;
+}
+
+
+div.clr {
+    clear: both;
+}
+
+
+/* NEWS */
+
+#center select.fil {        
+    width:439px;
+}
+
+a.grey {
+  color:#666;
+}
+
+a.grey:hover {
+   color:#B22D11;
+   text-decoration:underline;
+}
+
+
+#center .fdep {
+  margin-bottom:8px;
+  /*display: none;*/
+}
+#center .visible {
+  margin-bottom:8px;
+  display: block;
+}
+
+#center div.map {
+    width: 439px;
+    height: 307px;
+}
+
+#center div.info {
+   
+    margin: 0 7px 17px;
+}
+
+#center div.main {
+
+   margin-bottom: 15px;
+}
+#center div.date div.img {
+   float:left;
+}
+
+#center div.list a {
+   text-decoration: underline;
+   color: #666;
+}
+
+#center div.list a:hover {
+   text-decoration: underline;
+   color: #B22C1B;
+}
+
+.mtitle#lastnews {
+  margin:14px 0px 8px 0px;
+}
+
+#center div.date  {
+
+   margin:11px 0px 0px 2px;
+   padding-left: 11px;
+   background: url('clock001.gif') no-repeat 0px 3px;
+   font-size:10px;
+   clear: left;
+}
+#center div.date span.fil {
+    color: #B22C1B;
+}
+#center div.n_text {
+	margin-left: 1px;
+}
+
+#center div.n_text a.grey{
+  color:#666;
+}
+
+#center div.more {
+   margin: 5px 0px 0px 2px;
+}
+
+#center div.more div.m_text {
+   float:left;
+}
+
+#center div.more div.m_text a, div.center div.more div.m_text a:hover {
+   color: #B22C1B;
+}
+
+#center div.more div.img {
+   margin-left: 5px;
+   float:left;
+}
+
+#center div.newsitem {
+   margin-left: -3px;
+   padding-bottom: 1px;
+}
+
+#center .g_mini_title {
+   margin: 4px 0px 3px 0px;
+   font-family: Verdana;
+   font-weight: bold;
+   font-size: 11px;
+   color: #B22C1B;
+   display:block;
+}
+
+#center .g_mini_title a, .g_mini_title:hover {
+   font-family: Verdana;
+   font-weight: bold;
+   font-size: 11px;
+   color: #B22C1B;
+}
+
+#center div.from {
+    margin-top: 10px;
+    margin-left:4px;
+    font-style: italic;
+
+}
+
+div.text {
+    margin:0px 0px 5px 15px;
+
+}
+
+/***************************************/
+
+p#map_img {
+	float:left;
+	position:relative;
+	height:312px;
+	width:447px;
+	/*left: 10%;*/
+}
+
+p#map_img img {
+	left:0;
+	position:absolute;
+	top:0;
+	z-index:80;
+	display:none;
+}
+
+p#map_img img#area_px {
+	display:inline;
+	height:312px;
+	width:447px;
+	z-index:90;
+}
+
+p#map_img img#area_0 {
+	display: inline;
+}
+p#map_img img#area_00 {
+	display: inline;
+}
+
+div.noElements {
+	text-align:center;
+	font-size: 10px;
+	margin:25px 0px 25px 0px;
+}
+div.dep_info {
+    width: 691px;
+    float: left;
+    margin-left: 75px;
+}
+div.dep_info div.cities p.title{
+    background: url("/img/map/marker01.gif") no-repeat left center;
+    color:#E24569;
+    font-size:18px;
+    font-weight: 700;
+    padding-left: 10px;
+    margin:0 21px 8px;
+    /*display: block;*/
+   /* padding:0 0 8px;*/
+/*    cursor: pointer;*/
+}
+div.dep_info div.cities div.filialList {
+   padding-top: 10px;
+   margin-bottom: 10px;
+   display: block;
+}

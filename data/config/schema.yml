@@ -1,0 +1,342 @@
+entities:
+  Emp_Person:
+    table_name: %database.db_prefix%Persons
+    primary_key: id
+    implements: [iActive]
+    references:
+      orders: {entity: Emp_Order, local_key: personId, foreign_key: orderId, table: empTourists, editable: false, listable: false, name: Заказы}
+    constraints:
+      phones: {entity: Emp_PersonPhone, method: saveconstraint, name: Телефоны, foreign_key: personId}
+      tourists: {entity: Emp_Tourist, foreign_key: personId, editable: false, listable: false}
+    fields:
+      name: {type: string, nullable: false, name: ФИО}
+      email: {type: string_email, validate: true, name: Электронная почта}
+      address: {type: string, name: Адрес}
+      birth: {type: date, name: Дата рождения}
+      passport: {type: string, name: Паспортные данные}
+      passdate: {type: date, name: Дата выдачи паспорта}
+      comment: {type: textarea, name: Комментарий}
+
+  Emp_Tourist:
+    table_name: %database.db_prefix%Tourists
+    primary_key: id
+    constraints:
+      services: {entity: Emp_OrderService, foreign_key: touristId, name: Услуги}
+    foreigns:
+      person: {entity: Emp_Person, key: personId}
+      order: {entity: Emp_Order, key: orderId}
+      hotel: {entity: Emp_TourHotel, key: hotelId}
+      room: {entity: Emp_HotelRoom, key: roomId}
+      transport: {entity: Emp_TourTransport, key: transportId}
+      seat: {entity: Emp_VehicleSeat, key: seatId}
+
+  Emp_PersonPhone:
+    table_name: %database.db_prefix%PersonPhones
+    primary_key: id
+    foreigns:
+      person: {entity: Emp_Person, editable: false, name: Турист, key: personId}
+    fields:
+      name: {type: string, nullable: false, name: Телефон}
+
+  Emp_Direction:
+    table_name: %database.db_prefix%Directions
+    primary_key: id
+    constraints:
+      offers: {entity: Emp_Offer, method: saveconstraint, name: Предложение, foreign_key: directionId}
+      hotels: {entity: Emp_Hotel, editable: false, name: Отели, foreign_key: directionId}
+    fields:
+      name: {type: string, nullable: false, name: Название}
+
+  Emp_Offer:
+    table_name: %database.db_prefix%Offers
+    primary_key: id
+    constraints:
+      myservices: {entity: Emp_ServiceToOffer, listable: false, editable: false, foreign_key: offerId, name: Услуги}
+      mytours: {entity: Emp_ServiceToOffer, listable: false, editable: false, foreign_key: offerId, name: Туры}
+    foreigns:
+      direction: {entity: Emp_Direction, editable: false, name: Направление, key: directionId}
+    fields:
+      duration: {type: int, nullable: false,  name: Длительность}
+
+  Emp_Vehicle:
+    table_name: %database.db_prefix%Vehicles
+    implements: [ iActive ]
+    primary_key: id
+    constraints:
+      tiers: {entity: Emp_VehicleTier, foreign_key: vehicleId, listable: false, name: Этажи}
+    foreigns:
+      agent: {entity: Emp_Agent, name: Контрагент, key: agentId}
+    fields:
+      number: {type: string, nullable: false, name: Номер}
+      model: {type: string, nullable: false, name: Модель авто}
+      price: {type: int, name: Стоимость}
+      totalPlaces: {type: string, nullable: true, name: Всего мест}
+      width: {type: int, listable: false, name: Ширина автобуса}
+      secondTier: {type: bool, listable: false, name: Двухэтажный}
+
+  Emp_VehicleSeat:
+    table_name: %database.db_prefix%VehicleSeats
+    primary_key: id
+    foreigns:
+      tier: {entity: Emp_VehicleTier, key: tierId, name: Этаж}
+    fields:
+      number: { type: int, nullable: false, name: Номер }
+      row: { type: int, nullable: false, name: Row }
+      column: { type: int, nullable: false, name: Column }
+      comment: {type: string, name: Комментарий}
+
+  Emp_VehicleTier:
+    table_name: %database.db_prefix%VehicleTier
+    primary_key: id
+    implements: [ iActive ]
+    foreigns:
+      vehicle: {entity: Emp_Vehicle, key: vehicleId, name: Транспорт}
+    constraints:
+      seats: {entity: Emp_VehicleSeat, foreign_key: tierId, listable: false, name: Места}
+    fields:
+      name: {type: int, name: Название}
+      rows: {type: int, nullable: false, name: Число рядов}
+
+  Emp_Hotel:
+    table_name: %database.db_prefix%Hotels
+    implements: [ iWeighted ]
+    primary_key: id
+    constraints:
+      rooms: {entity: Emp_HotelRoom, method: saveconstraint, foreign_key: hotelId, name: Номера}
+      hotels: {entity: Emp_TourHotel, listable: false, editable: false, name: График проживания, foreign_key: thId}
+    foreigns:
+      agent: {entity: Emp_Agent, name: Контрагент, key: agentId}
+      direction: {entity: Emp_Direction, name: Направление, key: directionId}
+    fields:
+      name: {type: string, nullable: false, name: Название}
+      address: {type: string, nullable: false, name: Адрес}
+      contacts: {type: string, nullable: false, name: Контакты}
+      foodPrice: {type: int, listable: false, name: Стоимость питания/день}
+      coords: {type: string, name: Координаты Google}
+
+  Emp_HotelRoom:
+    table_name: %database.db_prefix%HotelRooms
+    implements: [ iWeighted ]
+    primary_key: id
+    foreigns:
+      hotel: {entity: Emp_Hotel, editable: false, name: Отель, key: hotelId}
+    fields:
+      type: {type: string, nullable: false, name: Вид номера}
+      price: {type: int, nullable: false, name: Цена}
+      quantity: {type: int, nullable: false, name: Количество}
+
+  Emp_Agent:
+    table_name: %database.db_prefix%Agents
+    primary_key: id
+    foreigns:
+      type: {entity: Emp_AgentType, key: typeId, name: Тип контрагента}
+    fields:
+      name: {type: string, nullable: false, name: Название/Имя}
+      contacts: {type: string, nullable: false, name: Контакты}
+
+  Emp_AgentType:
+    table_name: %database.db_prefix%AgentTypes
+    primary_key: id
+    fields:
+      name: {type: string, nullable: false, name: Название}
+
+  Emp_Service:
+    table_name: %database.db_prefix%Services
+    primary_key: id
+    implements: [ iWeighted ]
+    constraints:
+      toOffers: {entity: Emp_ServiceToOffer, editable: false, foreign_key: serviceId, name: Цены}
+    foreigns:
+      category: {entity: Emp_ServiceCategory, key: categoryId, ceditable: false, name: Категория}
+    fields:
+      name: {type: string, nullable: false, name: Название}
+      type: {type: string_list, name: Тип услуги(тех.)}
+      duration: {type: int, nullable: true, name: Длительность(тех.)}
+
+  Emp_ServiceToOffer:
+    table_name: %database.db_prefix%ServicesToOffers
+    primary_key: id
+    implements: [ iActive ]
+    foreigns:
+      offer: {entity: Emp_Offer, key: offerId, name: Предложение}
+      service: {entity: Emp_Service, key: serviceId, name: Услуга}
+    fields:
+      priceFirst: {type: int, nullable: false, name: Основная цена}
+      priceSecond: {type: int, nullable: false, name: Дополнительная цена}
+      isMain: {type: bool, default: true, name: Основная услуга}
+      isDefault: {type: bool, default: false, name: Услуга по умолчанию}
+
+  Emp_ServiceCategory:
+    table_name: %database.db_prefix%ServiceCategories
+    primary_key: id
+    implements: [iWeighted]
+    constraints:
+      services: {entity: Emp_Service, foreign_key: categoryId, method: saveconstraint, name: Услуги}
+    fields:
+      name: {type: string, nullable: false, name: Название категории услуг}
+
+  Emp_Driver:
+    table_name: %database.db_prefix%Drivers
+    primary_key: id
+    fields:
+      name: {type: string, nullable: false, name: ФИО}
+      phone: {type: string_phone, nullable: false, name: Телефон}
+
+  Emp_Source:
+    table_name: %database.db_prefix%Sources
+    primary_key: id
+    implements: [ iWeighted ]
+    fields:
+      name: {type: string, nullable: false, name: Название}
+
+  Emp_Order:
+    table_name: %database.db_prefix%Orders
+    primary_key: id
+    implements: [iActive]
+    references:
+      persons: {entity: Emp_Person, foreign_key: personId, local_key: orderId, table: empTourists, name: Туристы}
+    foreigns:
+      manager: {entity: User, key: managerId, name: Менеджер}
+      source: {entity: Emp_Source, key: sourceId, listable: false, name: Источник}
+      main: {entity: Emp_Person, key: mainId, name: Руководитель}
+      status: {entity: Emp_OrderStatus, key: statusId,  nullable: true, name: Статус}
+      offer: {entity: Emp_Offer, listable: false, key: offerId,  name: Продолжительность}
+      direction: {entity: Emp_Direction, key: directionId, name: Направление}
+      shipping: {entity: Emp_Shipping, key: shippingId, listable: false, name: Отправка}
+    constraints:
+      okcomments: {entity: Emp_OrderOkComment, foreign_key: orderId, listable: false, name: Ок Комментарии}
+      comments: {entity: Emp_OrderComment, foreign_key: orderId, listable: false, name: Комментарии}
+      addservices: {entity: Emp_AdditionalService, listable: false, foreign_key: orderId, name: Доп. услуги}
+      payments: {entity: Emp_OrderPayment, listable: false, foreign_key: orderId, name: Платежи}
+      tourists: {entity: Emp_Tourist, foreign_key: orderId, listable: false, name: Туристы}
+    fields:
+      ctime: {type: datetime_ctime, editable: false, name: Поступил}
+      generalWish: {type: string, listable: false, name: Общие пожелания}
+      transportWish: {type: string, listable: false, name: Пожелания по проезду}
+      hotelWish: {type: string, listable: false, name: Пожелания по проживанию}
+      price: {type: int, listable: false, editable: false, name: Фиксированная цена}
+      date: {type: date,  name: Дата отправки}
+
+  Emp_OrderPayment:
+    table_name: %database.db_prefix%OrderPayments
+    primary_key: id
+    foreigns:
+      manager: {entity: User, key: managerId, name: Менеджер}
+      order: {entity: Emp_Order, key: orderId, name: Заказ}
+      offcategory: {entity: Emp_ServiceCategory, key: serviceCategoryId, name: Категория}
+      source: {entity: Emp_SourcePayment, key: sourceId, name: Источник оплаты}
+    fields:
+      ctime: {type: datetime, editable: false, name: Время поступления}
+      sum: {type: int, name: Сумма}
+      comment: {type: string, name: Комментарий}
+
+  Emp_OrderStatus:
+    table_name: %database.db_prefix%OrderStatuses
+    primary_key: id
+    fields:
+      name: {type: string, name: Название}
+
+  Emp_AdditionalService:
+    table_name: %database.db_prefix%AdditionalServices
+    primary_key: id
+    foreigns:
+      order: {entity: Emp_Order, listable: false, name: Заказ, key: orderId}
+    fields:
+      price: {type: int, nullable: false, name: Цена}
+      comment: {type: string, nullable: false, name: Комментарий}
+
+  Emp_OrderService:
+    table_name: %database.db_prefix%OrderServices
+    primary_key: id
+    foreigns:
+      tourist: {entity: Emp_Tourist, key: touristId, name: Турист}
+      offservice: {entity: Emp_ServiceToOffer, key: serviceId, name: Услуга}
+    fields:
+      price: {type: int, name: Цена услуги}
+      comment: {type: string, name: Комментарий}
+      code: {type: string, nullable: true, name: Код(для скипассов)}
+
+  Emp_OrderComment:
+    table_name: %database.db_prefix%OrderComments
+    primary_key: id
+    foreigns:
+      manager: {entity: User, key: managerId, name: Менеджер}
+      order: {entity: Emp_Order, key: orderId, name: Заказ}
+      status: {entity: Emp_OrderStatus, key: statusId, name: Статус}
+    fields:
+      ctime: {type: datetime_ctime, editable: false, name: Время}
+      text: {type: textarea, name: Комментарий}
+
+  Emp_Tour:
+    table_name: %database.db_prefix%Tours
+    primary_key: id
+    foreigns:
+      offer: {entity: Emp_Offer, key: offerId, name: Продолжительность}
+    constraints:
+      transports: {entity: Emp_TourTransport, foreign_key: tourId, listable: false, editable: false, name: Транспорт}
+      hotels: {entity: Emp_TourHotel, foreign_key: tourId, listable: false, editable: false, name: Отели}
+      orders: {entity: Emp_Order, foreign_key: tourId, listable: false, editable: false, name: Заказы}
+      comments: {entity: Emp_TourComment, foreign_key: tourId, listable: false, name: Комментарии}
+    fields:
+      date: {type: date, editable: false, name: Дата}
+      comment: {type: string, editable: false, name: Комментарий}
+
+  Emp_TourTransport:
+    table_name: %database.db_prefix%TourTransports
+    primary_key: id
+    constraints:
+      passengers: {entity: Emp_OrderTransport, foreign_key: ttId, editable: false, listable: false, name: Пассажиры}
+    foreigns:
+      driver: {entity: Emp_Driver, key: driverId, name: Водитель}
+      tour: {entity: Emp_Tour, key: tourId,  name: Тур}
+      vehicle: {entity: Emp_Vehicle, key: vehicleId, name: Тур}
+
+  Emp_TourHotel:
+    table_name: %database.db_prefix%TourHotels
+    primary_key: id
+    constraints:
+      tourists: {entity: Emp_OrderHotel, foreign_key: thId, editable: false, listable: false, name: Жильцы}
+    foreigns:
+      tour: {entity: Emp_Tour, key: tourId, name: Тур}
+      hotel: {entity: Emp_Hotel, key: hotelId, name: Отель}
+
+  Emp_TourComment:
+    table_name: %database.db_prefix%TourComments
+    primary_key: id
+    foreigns:
+      manager: {entity: User, key: managerId, name: Менеджер}
+      tour: {entity: Emp_Tour, key: tourId, name: Тур}
+    fields:
+      ctime: {type: datetime_ctime, editable: false, name: Время}
+      text: {type: textarea, name: Комментарий}
+
+  Emp_OrderLog:
+    table_name: %database.db_prefix%OrderLog
+    primary_key: id
+    foreigns:
+      manager: {entity: User, key: managerId, name: Менеджер}
+      order: {entity: Emp_Order, key: orderId, name: Заказ}
+    fields:
+      comment: {type: string, name: Комментарий}
+      ctime: {type: datetime_ctime, name: Время}
+
+  Emp_Skipass:
+    table_name: %database.db_prefix%Skipasses
+    primary_key: id
+    fields:
+      code: {type: string, nullable: false, name: Код}
+      expiration: {type: date_nullable, nullable: true, name: Срок аренды}
+
+  Emp_SourcePayment:
+    table_name: %database.db_prefix%SourcePayment
+    primary_key: id
+    fields:
+      name: {type: string, name: Источник}
+
+  Emp_Shipping:
+    table_name: %database.db_prefix%Shipping
+    primary_key: id
+    foreigns:
+      order: {entity: Emp_Order, key: orderId, name: Продолжительность}
+    constraints:
+      orders: {entity: Emp_Order, foreign_key: shippingId, listable: false, editable: false, name: Заказы}

@@ -1,0 +1,57 @@
+<?php
+    define("FV_APP_ROOT", fvSite::$fvConfig->get("path.application." . FV_APP . ".root"));
+    define("FV_APP_WEB_ROOT", fvSite::$fvConfig->get("path.application." . FV_APP . ".web_root"));
+?>
+
+layoult: ModuleLayoult
+
+dir_web_root: %FV_APP_WEB_ROOT%
+dir_root: %FV_APP_ROOT%
+
+access:
+  enable: true
+  user_class: User
+  deny_page: /
+  login_page: /user
+  do_login: /user/login/
+  login_module: user
+  autologin: false
+  cookie_name: user_id
+  lifetime: +1 day
+  do_logout: /user/signout/
+  login_acl: acl_frontend_login
+
+page_404: %dir_web_root%404.php
+page_error: %dir_web_root%error.php
+
+title: English
+
+filters: [ LoggedUser, Security, Filter, Action ]
+
+qModifier:
+  iWeighted:
+    order: <alias>.weight ASC
+  iActive:
+    where: <alias>.isActive = 1
+  iActiveLocaled:
+    where: <alias>_lang.isLocaleActive = 1
+
+path:
+  images: %dir_web_root%img/
+  modules: %FV_APP_ROOT%modules/
+  components: %FV_APP_ROOT%components/
+  upload:
+    tmp_dir: %tech_web_root%img/upload/tmp/
+    web_tmp_dir: /img/upload/tmp/
+    web_root_dir: /img/upload/
+    root_dir: %tech_web_root%img/upload/
+  entImages:
+    Hotel: media/
+  smarty:
+    template: %FV_APP_ROOT%template/
+    compile: %path.smarty.template%template_c/
+    blocks: %path.smarty.template%blocks/
+
+includes:
+   css: [/css/main.css, /css/aristo.css, /css/bootstrap.css ]
+   js: [/js/jquery.min.js, /js/jquery.ui.js, /js/jquery.easing.1.3.js, /js/html5.js, /js/jquery.validate.min.js, /js/frontend/functions.js, /js/frontend/main.js, /js/bootstrap.min.js]

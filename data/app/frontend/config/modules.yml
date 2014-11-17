@@ -1,0 +1,107 @@
+modules:
+  index:
+    path: %path.modules%index/
+    action_class: IndexAction
+    module_class: IndexModule
+    name: Модуль по умолчанию
+    shows:
+      index: index
+      menu: menu
+    access:
+      enable: false
+    smarty:
+      template: %modules.index.path%template/
+      compile: %path.smarty.compile%
+
+  staticpages:
+    path: %path.modules%staticpages/
+    action_class: StaticPagesAction
+    module_class: StaticPagesModule
+    name: Модуль StaticPages
+    shows:
+      index: index
+    params:
+      index:
+        techUrl:  {name: Ссылка на страницу, default: ~}
+    access:
+      enable: false
+    smarty:
+      template: %modules.staticpages.path%template/
+      compile: %path.smarty.compile%
+
+  tourists:
+    path: %path.modules%tourists/
+    action_class: TouristsAction
+    module_class: TouristsModule
+    name: Туристы
+    shows:
+      index: index
+    smarty:
+      template: %modules.tourists.path%template/
+      compile: %path.smarty.compile%
+
+  orders:
+    path: %path.modules%orders/
+    action_class: OrdersAction
+    module_class: OrdersModule
+    name: Заказы
+    shows:
+      index: index
+    smarty:
+      template: %modules.orders.path%template/
+      compile: %path.smarty.compile%
+
+  tours:
+    path: %path.modules%tours/
+    action_class: ToursAction
+    module_class: ToursModule
+    name: Туры
+    shows:
+      index: index
+    smarty:
+      template: %modules.tours.path%template/
+      compile: %path.smarty.compile%
+
+  departure:
+    path: %path.modules%departure/
+    action_class: DepartureAction
+    module_class: DepartureModule
+    name: отправки
+    shows:
+      index: index
+    smarty:
+      template: %modules.departure.path%template/
+      compile: %path.smarty.compile%
+
+  delete:
+    path: %path.modules%delete/
+    action_class: DeleteAction
+    module_class: DeleteModule
+    name: Удаление
+    shows:
+      index: index
+    smarty:
+      template: %modules.delete.path%template/
+      compile: %path.smarty.compile%
+
+  save:
+    path: %path.modules%save/
+    action_class: SaveAction
+    module_class: SaveModule
+    name: Сохранение
+    shows:
+      index: index
+    smarty:
+      template: %modules.save.path%template/
+      compile: %path.smarty.compile%
+
+  user:
+    path: %path.modules%user/
+    action_class: UserAction
+    module_class: UserModule
+    name: Пользователь
+    shows:
+      index: index
+    smarty:
+      template: %modules.user.path%template/
+      compile: %path.smarty.compile%

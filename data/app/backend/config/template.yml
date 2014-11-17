@@ -1,0 +1,12 @@
+template:  
+  main:
+    source: main.tpl
+    name: Основной шаблон
+    default_content_part: page_content
+    content_parts:
+      page_content: Основной контент сайта
+      
+  loginLayoult:
+    source: loginLayoult.tpl
+    name: Шаблон Входа
+    

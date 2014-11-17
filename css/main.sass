@@ -1,0 +1,488 @@
+/* HTML5 display-role reset for older browsers
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+  display: block
+
+@import "compass"
+@import "compass/css3"
+@import "compass/css3/user-interface"
+
+.small
+  font-size: 10px
+  color: black
+
+
+.clearfix
+  zoom: 1
+  &:before, &:after
+    content: "\0020"
+    display: block
+    height: 0
+    overflow: hidden
+  &:after
+    clear: both
+
+body
+  background: white
+  padding-top: 70px
+
+.navbar-center
+  margin-top: 5px
+
+#messageBox
+  position: fixed
+  top: 60px
+  width: 960px
+  z-index: 10000
+
+#contentblocker
+  display: none
+  position: fixed
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  z-index: 500
+  background: url("/img/loading.gif") center no-repeat
+    color: rgba(128, 128, 128, 0.6)
+
+a.glyphicon
+  &:hover
+    text-decoration: none
+  &.red
+    color: red
+  &.green
+    color: green
+
+.table-list
+  font-size: 0.9em
+
+  thead
+    background: #cacaca
+    text-align: center
+
+  td.actions
+    text-align: center
+    width: 60px
+    a
+      display: inline-block
+      font-size: 1.2em
+      margin: 0 2px
+
+.form-edit
+  font-size: 13px
+
+  label
+    line-height: 28px
+
+    &.error-label
+      color: #B94A48
+
+.constraintblock
+  padding: 15px
+  border: 1px solid #dfdfdf
+  position: relative
+  width: 50%
+  margin-bottom: 15px
+  @extend .clearfix
+
+  label.title
+    display: inline-block
+    position: absolute
+    left: 20px
+    top: -15px
+    padding: 0 10px
+    z-index: 2
+    background: white
+
+#orderContainer
+  margin-top: 25px
+  font-size: 0.9em
+
+#orderForm
+  padding-top: 5px
+  border-top: 1px solid grey
+
+  .find-tour-container
+    position: relative
+    margin-top: 30px
+    z-index: 10
+
+  .find-tour
+    text-decoration: none
+    color: #00bfff
+    cursor: pointer
+
+    &:hover
+      text-decoration: underline
+
+  .find-tour-list
+    display: none
+    position: absolute
+    left: 15px
+    padding: 5px
+    border: 1px solid #afafaf
+    width: 250px
+    background: white
+
+  .find-tour-item
+    cursor: pointer
+
+.go-tour
+  color: #00bfff
+  display: inline-block
+  margin-right: 40px
+
+  &:hover
+    color: #00bfff
+
+.control-header
+  display: inline-block
+  float: left
+  font-weight: bold
+  width: 120px
+  padding: 0 2px
+  margin: 0 3px
+  font-size: 10px
+
+  &:first-of-type
+    margin-left: 10px
+
+  &.smaller
+    width: 85px
+
+  &.larger
+    width: 205px
+
+.form-tourist
+  @extend .clearfix
+  padding: 3px
+  border-radius: 5px
+  background: #eaeaea
+  margin-bottom: 2px
+
+  .form-group-sm
+    width: 90px !important
+
+  .form-group-lg
+    width: 210px !important
+
+  .form-group
+    width: 120px
+
+    &.nosize
+      width: auto !important
+
+    &.action
+      cursor: pointer
+      margin: 0 3px
+
+    &.save-edit
+      color: green
+
+    input
+      padding: 3px !important
+
+.searchform
+  margin-top: 3px
+
+#addComment
+  padding: 3px
+  border: 1px solid #e0e0e0
+
+.comment-body
+  padding: 5px
+  position: relative
+  border-bottom: 1px solid #333
+
+  .removecomment
+    position: absolute
+    bottom: 5px
+    right: 5px
+    color: #00bfff
+    text-decoration: underline
+
+  .comment-text
+    padding: 5px 0
+    font-size: 12px
+    clear: both
+
+.service-drag
+  padding: 3px 7px
+  margin: 3px 0
+  display: inline-block
+  vertical-align: top
+  cursor: pointer
+  border: 1px solid #7c7c7c
+    radius: 5px
+  @include background(linear-gradient(center top, #ededed 0%, #c4c4c4 100%))
+  font-size: 12px
+  width: 100%
+  text-align: center
+
+
+#orderTourists
+  h3.tourist-head
+    padding:
+      top: 15px
+      bottom: 15px
+  .service-list
+    padding: 0 !important
+
+    &.ui-accordion-content-active
+      padding: 2px 5px !important
+
+.form-service
+  font-size: 12px
+  background: #efefef
+  padding: 5px
+  margin: 5px 0
+  width: 100%
+  border: 1px solid #7c7c7c
+    radius: 5px
+
+  .action
+    font-size: 16px
+    margin-left: 10px
+
+  input
+    border: 1px solid #7c7c7c
+    padding: 3px
+
+  .service-title
+    display: inline-block
+
+    strong
+      display: inline-block
+      width: 100px
+
+    .name
+      display: inline-block
+      width: 100px
+
+    .price
+      display: inline-block
+      width: 50px
+
+  .service-price
+    width: 65px
+    display: inline-block
+
+    input
+      width: 40px
+
+  .service-comment
+    display: inline-block
+
+    input
+      width: 200px
+
+.small
+  font-size: 10px
+  color: black
+
+#priceTotal
+  font-size: 20px
+  line-height: 30px
+  margin-top: 20px
+  clear: both
+
+  #priceValue
+    text-decoration: underline
+
+#addServices
+  border: none
+
+  td.price
+    width: 60px
+
+  td.comment
+    width: 250px
+
+  label
+    display: block
+
+  input
+    border: 1px solid #7c7c7c
+    padding: 3px
+
+    &#new-add-price
+      width: 60px
+
+    &#new-add-comment
+      width: 250px
+
+  td
+    padding: 3px 5px
+
+  .save-add-service-td
+    vertical-align: bottom
+
+    .save-add-service
+      display: inline-block
+      margin-bottom: 10px
+
+.add-payment
+  float: left
+  margin-left: 15px
+  padding: 15px
+  border: 1px solid #bfbfbf
+
+  .datepick
+    margin-bottom: 15px
+
+  label
+    font-size: 12px
+
+  .second-pay
+    margin-left: 20px
+
+#paySum
+  width: 250px
+
+#payComment
+  @extend #paySum
+
+
+#comments
+  margin-bottom: 25px
+
+.order-pay-top
+  display: inline-block
+  margin-right: 25px
+
+h3.underline
+  border-bottom: 1px solid #e0e0e0
+
+.tourist-block
+  @extend .clearfix
+  font:
+    size: 11px
+
+  background: #efefef
+  padding: 5px
+  margin: 5px 0
+  width: 100%
+  border: 1px solid #7c7c7c
+    radius: 5px
+
+.tourlist-head
+  @extend .clearfix
+  font:
+    weight: bold
+    size: 12px
+
+.hide
+  display: none
+
+#tourMenu
+  margin: 20px 0
+  font-weight: bold
+
+.transport-container
+  border: 2px dashed #555555
+  padding: 5px
+  font-size: 12px
+  margin-top: 5px
+
+  select
+    padding: 4px
+    width: 100%
+    border: 1px solid #aaaaaa
+
+.red
+  color: red
+
+.hotel-container
+  @extend .transport-container
+
+  .rooms
+    padding: 3px 0
+    border-bottom: 1px solid #afafaf
+
+.text-ul
+  text-decoration: underline
+  font-size: 1.1em
+
+.tourist-drag
+  cursor: pointer
+
+.tourist-drag-helper
+  @include background(linear-gradient(top, #e0e0e0 0%, #d0d0d0 100%))
+  padding: 15px
+  border: 1px solid #777777
+    radius: 4px
+  font-size: 14px
+
+.hover-background
+  background: #e0e0e0
+  border: 2px solid #a0a0a0
+
+.addnew
+  margin-top: 10px
+  padding-top: 5px
+  border-top: 1px solid grey
+  font-size: 13px
+
+  button
+    margin-top: 10px
+
+.vehicle-droppable
+  margin-top: 5px
+
+.form-signin
+  max-width: 330px
+  padding: 15px
+  margin: 0 auto
+
+  .form-signin-heading, .checkbox
+    margin-bottom: 10px
+
+  .checkbox
+    font-weight: normal
+
+  .form-control
+    position: relative
+    font-size: 16px
+    height: auto
+    padding: 10px
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+
+  .form-control:focus
+    z-index: 2
+
+  input[type="text"]
+    margin-bottom: -1px
+    border-bottom:
+      left-radius: 0
+      right-radius: 0
+
+  input[type="password"]
+    margin-bottom: 10px
+    border-top:
+      left-radius: 0
+      right-radius: 0
+
+.account-wall
+  margin-top: 20px
+  padding: 40px 0px 20px 0px
+  background-color: #f7f7f7
+  @include box-shadow(0px 2px 2px rgba(0, 0, 0, 0.3))
+
+
+.login-title
+  color: #555
+  font-size: 18px
+  font-weight: 400
+  display: block
+
+.profile-img
+  width: 96px
+  height: 96px
+  margin: 0 auto 10px
+  display: block
+  @include border-radius(50%)
+
+.tourist-accordion
+  margin-top: 15px !important

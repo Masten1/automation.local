@@ -1,0 +1,106 @@
+routes:
+  delete:
+    url: /delete/:entity/:id
+    module: delete
+    action: index
+    params:
+      entity: [A-z\_]{0,255}
+      id: [0-9]{0,25}
+
+  save:
+    url: /save/:data/:entity
+    module: save
+    action: index
+    params:
+      data: [a-z]{0,255}
+      entity: [A-z\_]{0,255}
+      id: [0-9]{0,25}
+
+  tourist-edit:
+    url: /tourists/edit/:id
+    module: tourists
+    action: edit
+    params:
+      id: [0-9]{0,25}
+
+  orders-edit:
+    url: /orders/edit/:id
+    module: orders
+    action: edit
+    params:
+      id: [0-9]{0,25}
+
+  orders-save:
+    url: /orders/save/:id
+    module: orders
+    action: save
+    params:
+      id: [0-9]{0,25}
+
+  orders-rt:
+    url: /orders/removetourist/:eid/:id
+    module: orders
+    action: removetourist
+    params:
+      eid: [0-9]{0,25}
+      id: [0-9]{0,25}
+
+  orders-services:
+    url: /orders/services/:id
+    module: orders
+    action: services
+    params:
+      id: [0-9]{0,25}
+
+  orders-payments:
+    url: /orders/pay/:id
+    module: orders
+    action: pay
+    params:
+      id: [0-9]{0,25}
+
+  orders-ok:
+    url: /orders/ok/:id
+    module: orders
+    action: ok
+    params:
+      id: [0-9]{0,25}
+
+  orders-transfer:
+    url: /orders/transfer/:id
+    module: orders
+    action: transfer
+    params:
+      id: [0-9]{0,25}
+
+  orders-delpay:
+    url: /orders/deletepayment/:id
+    module: orders
+    action: deletepayment
+    params:
+      id: [0-9]{0,25}
+
+  tour-edit:
+    url: /tours/edit/:id
+    module: tours
+    action: edit
+    params:
+      id: [0-9]{0,25}
+
+  tour-list:
+    url: /tours/list/:id
+    module: tours
+    action: list
+    params:
+      id: [0-9]{0,25}
+
+  tour-finance:
+    url: /tours/hotelfinance/:id
+    module: tours
+    action: hotelfinance
+    params:
+      id: [0-9]{0,25}
+
+  default:
+    url: /:module/:action
+    params: []

@@ -1,0 +1,1 @@
+<p id="{$this->entity->getEntity()}-{$this->entity->getPk()}" class="form-control-static col-lg-offset-4 col-lg-8">{$this->entity->name} <a data-record="#{$this->entity->getEntity()}-{$this->entity->getPk()}" href="/delete/{$this->entity->getEntity()}/{$this->entity->getPk()}" class="glyphicon glyphicon-remove red msglink"></a></p>

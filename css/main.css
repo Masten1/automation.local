@@ -1,0 +1,639 @@
+/* HTML5 display-role reset for older browsers */
+/* line 2, main.sass */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 9, main.sass */
+.small {
+  font-size: 10px;
+  color: black;
+}
+
+/* line 14, main.sass */
+.clearfix, .constraintblock, .form-tourist, .tourist-block, .tourlist-head {
+  zoom: 1;
+}
+/* line 16, main.sass */
+.clearfix:before, .constraintblock:before, .form-tourist:before, .tourist-block:before, .tourlist-head:before, .clearfix:after, .constraintblock:after, .form-tourist:after, .tourist-block:after, .tourlist-head:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+/* line 21, main.sass */
+.clearfix:after, .constraintblock:after, .form-tourist:after, .tourist-block:after, .tourlist-head:after {
+  clear: both;
+}
+
+/* line 24, main.sass */
+body {
+  background: white;
+  padding-top: 70px;
+}
+
+/* line 28, main.sass */
+.navbar-center {
+  margin-top: 5px;
+}
+
+/* line 31, main.sass */
+#messageBox {
+  position: fixed;
+  top: 60px;
+  width: 960px;
+  z-index: 10000;
+}
+
+/* line 37, main.sass */
+#contentblocker {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 500;
+  background: url("/img/loading.gif") center no-repeat;
+  background-color: rgba(128, 128, 128, 0.6);
+}
+
+/* line 49, main.sass */
+a.glyphicon:hover {
+  text-decoration: none;
+}
+/* line 51, main.sass */
+a.glyphicon.red {
+  color: red;
+}
+/* line 53, main.sass */
+a.glyphicon.green {
+  color: green;
+}
+
+/* line 56, main.sass */
+.table-list {
+  font-size: 0.9em;
+}
+/* line 59, main.sass */
+.table-list thead {
+  background: #cacaca;
+  text-align: center;
+}
+/* line 63, main.sass */
+.table-list td.actions {
+  text-align: center;
+  width: 60px;
+}
+/* line 66, main.sass */
+.table-list td.actions a {
+  display: inline-block;
+  font-size: 1.2em;
+  margin: 0 2px;
+}
+
+/* line 71, main.sass */
+.form-edit {
+  font-size: 13px;
+}
+/* line 74, main.sass */
+.form-edit label {
+  line-height: 28px;
+}
+/* line 77, main.sass */
+.form-edit label.error-label {
+  color: #b94a48;
+}
+
+/* line 80, main.sass */
+.constraintblock {
+  padding: 15px;
+  border: 1px solid #dfdfdf;
+  position: relative;
+  width: 50%;
+  margin-bottom: 15px;
+}
+/* line 88, main.sass */
+.constraintblock label.title {
+  display: inline-block;
+  position: absolute;
+  left: 20px;
+  top: -15px;
+  padding: 0 10px;
+  z-index: 2;
+  background: white;
+}
+
+/* line 97, main.sass */
+#orderContainer {
+  margin-top: 25px;
+  font-size: 0.9em;
+}
+
+/* line 101, main.sass */
+#orderForm {
+  padding-top: 5px;
+  border-top: 1px solid grey;
+}
+/* line 105, main.sass */
+#orderForm .find-tour-container {
+  position: relative;
+  margin-top: 30px;
+  z-index: 10;
+}
+/* line 110, main.sass */
+#orderForm .find-tour {
+  text-decoration: none;
+  color: deepskyblue;
+  cursor: pointer;
+}
+/* line 115, main.sass */
+#orderForm .find-tour:hover {
+  text-decoration: underline;
+}
+/* line 118, main.sass */
+#orderForm .find-tour-list {
+  display: none;
+  position: absolute;
+  left: 15px;
+  padding: 5px;
+  border: 1px solid #afafaf;
+  width: 250px;
+  background: white;
+}
+/* line 127, main.sass */
+#orderForm .find-tour-item {
+  cursor: pointer;
+}
+
+/* line 130, main.sass */
+.go-tour {
+  color: deepskyblue;
+  display: inline-block;
+  margin-right: 40px;
+}
+/* line 135, main.sass */
+.go-tour:hover {
+  color: deepskyblue;
+}
+
+/* line 138, main.sass */
+.control-header {
+  display: inline-block;
+  float: left;
+  font-weight: bold;
+  width: 120px;
+  padding: 0 2px;
+  margin: 0 3px;
+  font-size: 10px;
+}
+/* line 147, main.sass */
+.control-header:first-of-type {
+  margin-left: 10px;
+}
+/* line 150, main.sass */
+.control-header.smaller {
+  width: 85px;
+}
+/* line 153, main.sass */
+.control-header.larger {
+  width: 205px;
+}
+
+/* line 156, main.sass */
+.form-tourist {
+  padding: 3px;
+  border-radius: 5px;
+  background: #eaeaea;
+  margin-bottom: 2px;
+}
+/* line 163, main.sass */
+.form-tourist .form-group-sm {
+  width: 90px !important;
+}
+/* line 166, main.sass */
+.form-tourist .form-group-lg {
+  width: 210px !important;
+}
+/* line 169, main.sass */
+.form-tourist .form-group {
+  width: 120px;
+}
+/* line 172, main.sass */
+.form-tourist .form-group.nosize {
+  width: auto !important;
+}
+/* line 175, main.sass */
+.form-tourist .form-group.action {
+  cursor: pointer;
+  margin: 0 3px;
+}
+/* line 179, main.sass */
+.form-tourist .form-group.save-edit {
+  color: green;
+}
+/* line 182, main.sass */
+.form-tourist .form-group input {
+  padding: 3px !important;
+}
+
+/* line 185, main.sass */
+.searchform {
+  margin-top: 3px;
+}
+
+/* line 188, main.sass */
+#addComment {
+  padding: 3px;
+  border: 1px solid #e0e0e0;
+}
+
+/* line 192, main.sass */
+.comment-body {
+  padding: 5px;
+  position: relative;
+  border-bottom: 1px solid #333333;
+}
+/* line 197, main.sass */
+.comment-body .removecomment {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  color: deepskyblue;
+  text-decoration: underline;
+}
+/* line 204, main.sass */
+.comment-body .comment-text {
+  padding: 5px 0;
+  font-size: 12px;
+  clear: both;
+}
+
+/* line 209, main.sass */
+.service-drag {
+  padding: 3px 7px;
+  margin: 3px 0;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  border: 1px solid #7c7c7c;
+  border-radius: 5px;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ededed), color-stop(100%, #c4c4c4));
+  background: -webkit-linear-gradient(center top, #ededed 0%, #c4c4c4 100%);
+  background: -moz-linear-gradient(center top, #ededed 0%, #c4c4c4 100%);
+  background: -o-linear-gradient(center top, #ededed 0%, #c4c4c4 100%);
+  background: linear-gradient(center top, #ededed 0%, #c4c4c4 100%);
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 224, main.sass */
+#orderTourists h3.tourist-head {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+/* line 228, main.sass */
+#orderTourists .service-list {
+  padding: 0 !important;
+}
+/* line 231, main.sass */
+#orderTourists .service-list.ui-accordion-content-active {
+  padding: 2px 5px !important;
+}
+
+/* line 234, main.sass */
+.form-service {
+  font-size: 12px;
+  background: #efefef;
+  padding: 5px;
+  margin: 5px 0;
+  width: 100%;
+  border: 1px solid #7c7c7c;
+  border-radius: 5px;
+}
+/* line 243, main.sass */
+.form-service .action {
+  font-size: 16px;
+  margin-left: 10px;
+}
+/* line 247, main.sass */
+.form-service input {
+  border: 1px solid #7c7c7c;
+  padding: 3px;
+}
+/* line 251, main.sass */
+.form-service .service-title {
+  display: inline-block;
+}
+/* line 254, main.sass */
+.form-service .service-title strong {
+  display: inline-block;
+  width: 100px;
+}
+/* line 258, main.sass */
+.form-service .service-title .name {
+  display: inline-block;
+  width: 100px;
+}
+/* line 262, main.sass */
+.form-service .service-title .price {
+  display: inline-block;
+  width: 50px;
+}
+/* line 266, main.sass */
+.form-service .service-price {
+  width: 65px;
+  display: inline-block;
+}
+/* line 270, main.sass */
+.form-service .service-price input {
+  width: 40px;
+}
+/* line 273, main.sass */
+.form-service .service-comment {
+  display: inline-block;
+}
+/* line 276, main.sass */
+.form-service .service-comment input {
+  width: 200px;
+}
+
+/* line 279, main.sass */
+.small {
+  font-size: 10px;
+  color: black;
+}
+
+/* line 283, main.sass */
+#priceTotal {
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: 20px;
+  clear: both;
+}
+/* line 289, main.sass */
+#priceTotal #priceValue {
+  text-decoration: underline;
+}
+
+/* line 292, main.sass */
+#addServices {
+  border: none;
+}
+/* line 295, main.sass */
+#addServices td.price {
+  width: 60px;
+}
+/* line 298, main.sass */
+#addServices td.comment {
+  width: 250px;
+}
+/* line 301, main.sass */
+#addServices label {
+  display: block;
+}
+/* line 304, main.sass */
+#addServices input {
+  border: 1px solid #7c7c7c;
+  padding: 3px;
+}
+/* line 308, main.sass */
+#addServices input#new-add-price {
+  width: 60px;
+}
+/* line 311, main.sass */
+#addServices input#new-add-comment {
+  width: 250px;
+}
+/* line 314, main.sass */
+#addServices td {
+  padding: 3px 5px;
+}
+/* line 317, main.sass */
+#addServices .save-add-service-td {
+  vertical-align: bottom;
+}
+/* line 320, main.sass */
+#addServices .save-add-service-td .save-add-service {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* line 324, main.sass */
+.add-payment {
+  float: left;
+  margin-left: 15px;
+  padding: 15px;
+  border: 1px solid #bfbfbf;
+}
+/* line 330, main.sass */
+.add-payment .datepick {
+  margin-bottom: 15px;
+}
+/* line 333, main.sass */
+.add-payment label {
+  font-size: 12px;
+}
+/* line 336, main.sass */
+.add-payment .second-pay {
+  margin-left: 20px;
+}
+
+/* line 339, main.sass */
+#paySum, #payComment {
+  width: 250px;
+}
+
+/* line 346, main.sass */
+#comments {
+  margin-bottom: 25px;
+}
+
+/* line 349, main.sass */
+.order-pay-top {
+  display: inline-block;
+  margin-right: 25px;
+}
+
+/* line 353, main.sass */
+h3.underline {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* line 356, main.sass */
+.tourist-block {
+  font-size: 11px;
+  background: #efefef;
+  padding: 5px;
+  margin: 5px 0;
+  width: 100%;
+  border: 1px solid #7c7c7c;
+  border-radius: 5px;
+}
+
+/* line 368, main.sass */
+.tourlist-head {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/* line 374, main.sass */
+.hide {
+  display: none;
+}
+
+/* line 377, main.sass */
+#tourMenu {
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+/* line 381, main.sass */
+.transport-container, .hotel-container {
+  border: 2px dashed #555555;
+  padding: 5px;
+  font-size: 12px;
+  margin-top: 5px;
+}
+/* line 387, main.sass */
+.transport-container select, .hotel-container select {
+  padding: 4px;
+  width: 100%;
+  border: 1px solid #aaaaaa;
+}
+
+/* line 392, main.sass */
+.red {
+  color: red;
+}
+
+/* line 398, main.sass */
+.hotel-container .rooms {
+  padding: 3px 0;
+  border-bottom: 1px solid #afafaf;
+}
+
+/* line 402, main.sass */
+.text-ul {
+  text-decoration: underline;
+  font-size: 1.1em;
+}
+
+/* line 406, main.sass */
+.tourist-drag {
+  cursor: pointer;
+}
+
+/* line 409, main.sass */
+.tourist-drag-helper {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e0e0e0), color-stop(100%, #d0d0d0));
+  background: -webkit-linear-gradient(top, #e0e0e0 0%, #d0d0d0 100%);
+  background: -moz-linear-gradient(top, #e0e0e0 0%, #d0d0d0 100%);
+  background: -o-linear-gradient(top, #e0e0e0 0%, #d0d0d0 100%);
+  background: linear-gradient(top, #e0e0e0 0%, #d0d0d0 100%);
+  padding: 15px;
+  border: 1px solid #777777;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* line 416, main.sass */
+.hover-background {
+  background: #e0e0e0;
+  border: 2px solid #a0a0a0;
+}
+
+/* line 420, main.sass */
+.addnew {
+  margin-top: 10px;
+  padding-top: 5px;
+  border-top: 1px solid grey;
+  font-size: 13px;
+}
+/* line 426, main.sass */
+.addnew button {
+  margin-top: 10px;
+}
+
+/* line 429, main.sass */
+.vehicle-droppable {
+  margin-top: 5px;
+}
+
+/* line 432, main.sass */
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+/* line 437, main.sass */
+.form-signin .form-signin-heading, .form-signin .checkbox {
+  margin-bottom: 10px;
+}
+/* line 440, main.sass */
+.form-signin .checkbox {
+  font-weight: normal;
+}
+/* line 443, main.sass */
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 452, main.sass */
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+/* line 455, main.sass */
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+/* line 461, main.sass */
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* line 467, main.sass */
+.account-wall {
+  margin-top: 20px;
+  padding: 40px 0px 20px 0px;
+  background-color: #f7f7f7;
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* line 474, main.sass */
+.login-title {
+  color: #555555;
+  font-size: 18px;
+  font-weight: 400;
+  display: block;
+}
+
+/* line 480, main.sass */
+.profile-img {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+
+/* line 487, main.sass */
+.tourist-accordion {
+  margin-top: 15px !important;
+}
